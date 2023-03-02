@@ -1,13 +1,15 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Edit Flow{% endblock %}
+{% block title %}Editer un flux{% endblock %}
 
 {% block body %}
-    <h1>Edit Flow</h1>
+    <h1>Editer un flux</h1>
 
-    {{ include('flow/_form.html.twig', {'button_label': 'Update'}) }}
+    {{ include('flow/_form.html.twig', {'button_label': 'Mettre à jour'}) }}
 
-    <a href="{{ path('app_flow_index') }}">back to list</a>
+    <p class="my-3">
+        <a href="{{ path('app_flow_index') }}">Retour à la liste</a>
+    </p>
 
     {{ include('flow/_delete_form.html.twig') }}
 {% endblock %}

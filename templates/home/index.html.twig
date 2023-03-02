@@ -4,23 +4,40 @@
 
 {% block body %}
     
-    <h2>{{ data.title }} </h2>
-    
-    <div class="row gy-3">
-    {% for data in data.entries %}
-        <div class="col-sm">
-            <div class="card h-100">
-                <div class="card-header small">
-                    {{ data.dateModified|date("d/m/Y") }}
-                </div>
-                <div class="card-body">
-                    <h5 class="card-title">{{ data.title|e }}</h5>
-                    <p class="card-text">{{ data.description|e }}</p>
-                    <p><a href="{{ data.link }}" target="_blank">voir</a></p>
+    {% if arrayData %}
+        {% for data in arrayData %}
+        <h2 class="my-5">{{ data.title }} </h2>
+        
+        <div class="row gy-3">
+        {% for data in data.entries|slice(0,5) %}
+            <div class="col-sm">
+                <div class="card h-100 text-white bg-primary">
+                    <div class="card-header small">
+                        {{ data.dateModified|date("d/m/Y") }}
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title">{{ data.title|e }}</h5>
+                        <p class="card-text">{{ data.description|striptags }}</p>
+                        <p><a class="link-light" href="{{ data.link }}" target="_blank">voir</a></p>
+                    </div>
                 </div>
             </div>
+        {% endfor %}
         </div>
-    {% endfor %}
-    </div>
+        {% endfor %}
+    {% else %}
+        <h2 class="my-5">Créez votre veille technologique simplement!</h2>
+        <ul class="list-group list-group-flush">
+            <li class="list-group-item">Inscrivez-vous gratuitement</li>
+            <li class="list-group-item">Ajoutez les flux que vous souhaitez suivre</li>
+            <li class="list-group-item">Accéder à votre information</li>
+        </ul>
+
+        <div class="my-5 text-center">
+        <a class="btn btn-primary" href="{{ path('app_login') }}">Connexion</a>
+        <a class="btn btn-danger" href="{{ path('app_register') }}">Inscription</a>
+        </div>
+    {% endif %}
+        
 
 {% endblock %}

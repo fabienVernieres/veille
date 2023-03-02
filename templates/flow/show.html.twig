@@ -1,9 +1,9 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Flow{% endblock %}
+{% block title %}Flux{% endblock %}
 
 {% block body %}
-    <h1>Flow</h1>
+    <h1>Flux</h1>
 
     <table class="table">
         <tbody>
@@ -12,7 +12,7 @@
                 <td>{{ flow.id }}</td>
             </tr>
             <tr>
-                <th>Title</th>
+                <th>Titre</th>
                 <td>{{ flow.title }}</td>
             </tr>
             <tr>
@@ -22,9 +22,11 @@
         </tbody>
     </table>
 
-    <a href="{{ path('app_flow_index') }}">back to list</a>
+    <p class="my-3">
+    <a href="{{ path('app_flow_index') }}">Retour à la liste</a>
 
-    <a href="{{ path('app_flow_edit', {'id': flow.id}) }}">edit</a>
-
+    <a href="{{ path('app_flow_edit', {'id': flow.id}) }}">Modifier</a>
+    </p>
+    
     {{ include('flow/_delete_form.html.twig') }}
 {% endblock %}
