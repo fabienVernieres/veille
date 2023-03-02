@@ -3,5 +3,24 @@
 {% block title %}Veille technologique!{% endblock %}
 
 {% block body %}
+    
+    <h2>{{ data.title }} </h2>
+    
+    <div class="row gy-3">
+    {% for data in data.entries %}
+        <div class="col-sm">
+            <div class="card h-100">
+                <div class="card-header small">
+                    {{ data.dateModified|date("d/m/Y") }}
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title">{{ data.title|e }}</h5>
+                    <p class="card-text">{{ data.description|e }}</p>
+                    <p><a href="{{ data.link }}" target="_blank">voir</a></p>
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+    </div>
 
 {% endblock %}
