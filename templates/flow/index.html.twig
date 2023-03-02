@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Liste des flux{% endblock %}
+
+{% block body %}
+    <h1>Liste des flux</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Titre</th>
+                <th>Url</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for flow in flows %}
+            <tr>
+                <td>{{ flow.id }}</td>
+                <td>{{ flow.title }}</td>
+                <td>{{ flow.url }}</td>
+                <td>
+                    <a href="{{ path('app_flow_show', {'id': flow.id}) }}">voir</a>
+                    <a href="{{ path('app_flow_edit', {'id': flow.id}) }}">éditer</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="4">Aucun flux trouvé</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_flow_new') }}">Ajouter un flux</a>
+{% endblock %}
