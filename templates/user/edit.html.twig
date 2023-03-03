@@ -1,0 +1,12 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Vos paramètres{% endblock %}
+
+{% block body %}
+    <div class="container pt-5 mt-5">
+    <h1>Vos paramètres</h1>
+
+    {{ include('user/_form.html.twig', {'button_label': 'Mettre à jour'}) }}
+
+    </div>
+{% endblock %}

@@ -3,6 +3,7 @@
 {% block title %}Liste des flux{% endblock %}
 
 {% block body %}
+    <div class="container py-5 mt-5">
     <h1>Liste des flux</h1>
 
     <table class="table">
@@ -18,11 +19,12 @@
         {% for flow in flows %}
             <tr>
                 <td>{{ flow.id }}</td>
-                <td>{{ flow.title }}</td>
+                <td><strong>{{ flow.title }}</strong></td>
                 <td>{{ flow.url }}</td>
                 <td>
-                    <a href="{{ path('app_flow_show', {'id': flow.id}) }}">voir</a>
-                    <a href="{{ path('app_flow_edit', {'id': flow.id}) }}">éditer</a>
+                    <a href="{{ path('app_flow_show', {'id': flow.id}) }}" title="Voir"><i class="fa-solid fa-magnifying-glass pe-2"></i></a>
+                    <a href="{{ path('app_flow_edit', {'id': flow.id}) }}" title="Editer"><i class="fa-regular fa-pen-to-square pe-2"></i></a>
+                    <a href="{{ flow.url }}" target="_blank" title="Ouvrir"><i class="fa-solid fa-link"></i></a>
                 </td>
             </tr>
         {% else %}
@@ -34,4 +36,5 @@
     </table>
 
     <a href="{{ path('app_flow_new') }}">Ajouter un flux</a>
+    </div>
 {% endblock %}
