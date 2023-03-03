@@ -3,6 +3,7 @@
 {% block title %}Editer un flux{% endblock %}
 
 {% block body %}
+    <div class="container py-5 mt-5">
     <h1>Editer un flux</h1>
 
     {{ include('flow/_form.html.twig', {'button_label': 'Mettre à jour'}) }}
@@ -12,4 +13,5 @@
     </p>
 
     {{ include('flow/_delete_form.html.twig') }}
+    </div>
 {% endblock %}
