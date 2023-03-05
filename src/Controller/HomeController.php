@@ -18,19 +18,22 @@ class HomeController extends AbstractController
         /** @var array Tableau regroupant les données des différents flux. */
         $arrayData = [];
 
-        if ($this->getUser()) {
+        /** On vérifie si un utilisateur est connecté. */
+        $user = $this->getUser() ? $this->getUser() : NULL;
+
+        if ($user) {
             /** Définition du nom du cache. */
             $cache = new FilesystemAdapter();
-            $cacheName = 'cache-' . $this->getUser()->getUserIdentifier();
+            $cacheName = 'cache-' . $user->getUserIdentifier();
             $cacheName = str_replace('@', '', $cacheName);
 
             /** @var array Liste des flux de l'utilisateur. */
-            $flows = $flowRepository->findBy(['User' => $this->getUser()]);
+            $flows = $flowRepository->findBy(['User' => $user]);
 
             if ($flows) {
                 /** Pour chaque flux les données sont stockées dans $arrayData. */
-                $arrayData = $cache->get($cacheName, function (ItemInterface $item) use ($flows) {
-                    $item->expiresAfter(3600);
+                $arrayData = $cache->get($cacheName, function (ItemInterface $item) use ($flows, $user) {
+                    $item->expiresAfter($user->getCacheDuration());
 
                     foreach ($flows as $flow) {
                         $feed = Reader::import($flow->getUrl());
