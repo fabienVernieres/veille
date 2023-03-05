@@ -4,6 +4,7 @@ namespace App\Form;
 
 use App\Entity\User;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Validator\Constraints\Length;
 use Symfony\Component\Validator\Constraints\NotBlank;
@@ -34,6 +35,22 @@ class UserType extends AbstractType
                         'max' => 4096,
                     ])
                 ],
+            ])
+            ->add('cacheDuration', ChoiceType::class, [
+                'label' => 'Mise à jour de votre veille chaque',
+                'choices' => [
+                    'jour' => 3600 * 24,
+                    'semaine' => 3600 * 24 * 7,
+                    'mois' => 3600 * 24 * 30,
+                ]
+            ])
+            ->add('numberOfPosts', ChoiceType::class, [
+                'label' => 'Nombre de posts par flux',
+                'choices' => [
+                    '3' => 3,
+                    '5' => 5,
+                    '10' => 10,
+                ]
             ]);
     }
 

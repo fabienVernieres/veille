@@ -38,6 +38,12 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\OneToMany(mappedBy: 'User', targetEntity: Flow::class, orphanRemoval: true)]
     private Collection $flows;
 
+    #[ORM\Column]
+    private ?int $numberOfPosts = null;
+
+    #[ORM\Column]
+    private ?int $cacheDuration = null;
+
     public function __construct()
     {
         $this->flows = new ArrayCollection();
@@ -151,6 +157,30 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
                 $flow->setUser(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getNumberOfPosts(): ?int
+    {
+        return $this->numberOfPosts;
+    }
+
+    public function setNumberOfPosts(int $numberOfPosts): self
+    {
+        $this->numberOfPosts = $numberOfPosts;
+
+        return $this;
+    }
+
+    public function getCacheDuration(): ?int
+    {
+        return $this->cacheDuration;
+    }
+
+    public function setCacheDuration(int $cacheDuration): self
+    {
+        $this->cacheDuration = $cacheDuration;
 
         return $this;
     }

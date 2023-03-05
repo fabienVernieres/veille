@@ -31,7 +31,7 @@
         <!-- Navigation-->
         <nav class="navbar navbar-expand-lg navbar-dark navbar-custom fixed-top">
             <div class="container px-5">
-                <a class="navbar-brand" href="#page-top">Veille Technologique</a>
+                <a class="navbar-brand" href="{{ path('app_home') }}">Veille Technologique</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
                 <div class="collapse navbar-collapse" id="navbarResponsive">
                     <ul class="navbar-nav ms-auto">
@@ -60,16 +60,16 @@
         {% block body %}{% endblock %}
         
         {% if app.user %}
-            <div class="mt-3">
+            <div class="my-5">
                 <ul class="nav justify-content-center">
                     <li class="nav-item">
                         <a class="nav-link active" href="{{ path('app_flow_index') }}">Gestion des flux</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ path('app_flow_index') }}">Lister</a>
+                        <a class="nav-link" href="{{ path('app_flow_new') }}">Ajouter un flux</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ path('app_flow_new') }}">Ajouter</a>
+                        <a class="nav-link" href="{{ path('app_user_edit') }}">Vos paramètres</a>
                     </li>
                 </ul>
 

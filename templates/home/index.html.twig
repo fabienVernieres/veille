@@ -7,28 +7,34 @@
     {# On parcourt le tableau des flux et affiche les 5 derniers posts de chacun. #}
     {% if app.user %}
         <div class="container pt-5">
-        {% for data in arrayData %}
-        <div class="mt-5">
-            <h2 class="my-3 bg-primary p-3 text-light">{{ data.title }} </h2>
-            
-            <div class="row gy-3">
-            {% for data in data.entries|slice(0,3) %}
-                <div class="col-sm">
-                    <div class="card h-100 text-dark bg-secondary">
-                        <div class="card-header small text-light">
-                            {{ data.dateModified|date("d/m/Y") }}
-                        </div>
-                        <div class="card-body bg-light">
-                            <h5 class="card-title">{{ data.title|e }}</h5>
-                            <p class="card-text">{{ data.description|striptags }}</p>
-                            <p><a class="link-primary" href="{{ data.link }}" target="_blank">voir</a></p>
+        {% if arrayData| length > 0 %}
+            {% for data in arrayData %}
+            <div class="mt-5">
+                <h2 class="my-3 bg-primary p-3 text-light">{{ data.title }} </h2>
+                
+                <div class="row gy-3">
+                {% for data in data.entries|slice(0,app.user.numberOfPosts) %}
+                    <div class="col-sm">
+                        <div class="card h-100 text-dark bg-secondary">
+                            <div class="card-header small text-light">
+                                {{ data.dateModified|date("d/m/Y") }}
+                            </div>
+                            <div class="card-body bg-light">
+                                <h5 class="card-title">{{ data.title|e }}</h5>
+                                <p class="card-text">{{ data.description|striptags }}</p>
+                                <p><a class="link-primary" href="{{ data.link }}" target="_blank">voir</a></p>
+                            </div>
                         </div>
                     </div>
+                {% endfor %}
                 </div>
-            {% endfor %}
             </div>
-        </div>
-        {% endfor %}
+            {% endfor %}
+
+            {% else %}
+            <h1 class="py-5 text-primary text-center">Bienvenue sur votre veille technologique</h1>
+            <h2 class="text-center">Ajouter des flux pour commencer votre suivi informatif.</h2>
+        {% endif %}
         </div>
     {% else %}
     
