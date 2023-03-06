@@ -14,7 +14,6 @@ jobs:
       - name: 📦 Install Packages
         uses: php-actions/composer@v6
         with:
-          dev: no
           args: --ignore-platform-reqs
 
       - name: 🔨 Build
