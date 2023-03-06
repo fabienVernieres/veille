@@ -20,7 +20,6 @@ jobs:
         run: |
           touch .env.local
           echo "${{ secrets.local }}" > .env.local
-          php bin/console doctrine:migrations:migrate
 
       - name: 📂 Sync Files
         uses: SamKirkland/web-deploy@v1
