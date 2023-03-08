@@ -15,9 +15,7 @@ class PostType extends AbstractType
             ->add('title')
             ->add('description')
             ->add('link')
-            ->add('createdAt')
-            ->add('user')
-        ;
+            ->add('createdAt');
     }
 
     public function configureOptions(OptionsResolver $resolver): void
