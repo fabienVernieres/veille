@@ -6,7 +6,7 @@
     
     {# On parcourt le tableau des flux et affiche les 5 derniers posts de chacun. #}
     {% if app.user %}
-        <div class="container pt-5">
+        <div class="container pt-5 flows">
         {% if arrayData| length > 0 %}
             {% for data in arrayData %}
             <div class="mt-5">
@@ -17,15 +17,15 @@
                     <div class="col-sm">
                         <div class="news card h-100 text-dark bg-secondary overflow-hidden">
                             <div class="card-header small text-light row">
-                                <div class="col">{{ data.dateModified|date("d/m/Y") }}</div>
+                                <div class="col news-date">{{ data.dateModified|date("d/m/Y") }}</div>
                                 <div class="col text-end">
-                                    <i class="fa-solid fa-floppy-disk"></i>
+                                    <span><i class="fa-solid fa-floppy-disk"></i></span>
                                 </div>
                             </div>
                             <div class="card-body bg-light">
-                                <h5 class="card-title">{{ data.title|e }}</h5>
-                                <p class="card-text">{{ data.description|striptags }}</p>
-                                <p><a class="link-primary" href="{{ data.link }}" target="_blank">voir</a></p>
+                                <h5 class="card-title news-title">{{ data.title|e }}</h5>
+                                <p class="card-text news-description">{{ data.description|striptags }}</p>
+                                <p><a class="link-primary news-link" href="{{ data.link }}" target="_blank">voir</a></p>
                             </div>
                         </div>
                     </div>

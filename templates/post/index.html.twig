@@ -1,41 +1,40 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Post index{% endblock %}
+{% block title %}Vos favoris{% endblock %}
 
 {% block body %}
-    <h1>Post index</h1>
+    
+    {# On parcourt le tableau des posts. #}
+    {% if posts %}
+        <div class="container pt-5">
+            <div class="mt-5">
+                <h2 class="my-3 bg-primary p-3 text-light">Vos favoris</h2>
+                <div class="row gy-3">
+                    {% for post in posts %}
+                        <div id="{{ post.id }}" class="favorites col-sm">
+                            <div class="card h-100 text-dark bg-secondary overflow-hidden">
+                                <div class="card-header small text-light row">
+                                    <div class="col news-date">{{ post.createdAt|date("d/m/Y") }}</div>
+                                    <div class="col text-end">
+                                        <span><i class="fa-solid fa-trash"></i></span>
+                                    </div>
+                                </div>
+                                <div class="card-body bg-light">
+                                    <h5 class="card-title news-title">{{ post.title|e }}</h5>
+                                    <p class="card-text news-description">{{ post.description|striptags }}</p>
+                                    <p><a class="link-primary news-link" href="{{ post.link }}" target="_blank">voir</a></p>
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    {% else %}
+        <div class="container pt-5">
+            <h2 class="pt-5">Aucun article sauvegardé pour le moment.</h2>
+        </div>
+    {% endif %}
+        
 
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Title</th>
-                <th>Description</th>
-                <th>Link</th>
-                <th>CreatedAt</th>
-                <th>actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for post in posts %}
-            <tr>
-                <td>{{ post.id }}</td>
-                <td>{{ post.title }}</td>
-                <td>{{ post.description }}</td>
-                <td>{{ post.link }}</td>
-                <td>{{ post.createdAt ? post.createdAt|date('Y-m-d H:i:s') : '' }}</td>
-                <td>
-                    <a href="{{ path('app_post_show', {'id': post.id}) }}">show</a>
-                    <a href="{{ path('app_post_edit', {'id': post.id}) }}">edit</a>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="6">no records found</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
-
-    <a href="{{ path('app_post_new') }}">Create new</a>
 {% endblock %}

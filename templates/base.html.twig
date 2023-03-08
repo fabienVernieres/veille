@@ -41,6 +41,7 @@
                     <li class="nav-item"><a class="nav-link" href="{{ path('app_register') }}">Inscription</a></li>
                     <li class="nav-item"><a class="nav-link" href="{{ path('app_login') }}">Connexion</a></li>
                     {% else %}
+                    <li class="nav-item"><a class="nav-link" href="{{ path('app_post') }}">Vos favoris</a></li>
                     <li class="nav-item"><a class="nav-link" href="{{ path('app_flow_index') }}">Gestion des flux</a></li>
                     <li class="nav-item"><a class="nav-link" href="{{ path('app_user_edit') }}">Paramètres</a></li>
                     <li class="nav-item"><a class="nav-link" href="{{ path('app_logout') }}">Déconnexion</a></li>
@@ -64,6 +65,9 @@
             <div class="my-5">
                 <ul class="nav justify-content-center">
                     <li class="nav-item">
+                        <a class="nav-link active" href="{{ path('app_home') }}">Votre veille</a>
+                    </li>
+                    <li class="nav-item">
                         <a class="nav-link active" href="{{ path('app_flow_index') }}">Gestion des flux</a>
                     </li>
                     <li class="nav-item">
@@ -71,6 +75,10 @@
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="{{ path('app_user_edit') }}">Vos paramètres</a>
+                    </li>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ path('app_post') }}">Vos favoris</a>
                     </li>
                 </ul>
 
