@@ -943,6 +943,10 @@ progress {
 }
 
 @media (min-width: 576px) {
+  .masthead-heading {
+    font-size: 4rem !important;
+  }
+
   .col-sm {
     flex: 1 0 0%;
   }
@@ -11711,10 +11715,10 @@ header.masthead .masthead-content {
   position: relative;
 }
 header.masthead .masthead-content .masthead-heading {
-  font-size: 4rem;
+  font-size: 2rem;
 }
 header.masthead .masthead-content .masthead-subheading {
-  font-size: 2rem;
+  font-size: 1.5rem;
 }
 header.masthead .bg-circle {
   z-index: 0;
