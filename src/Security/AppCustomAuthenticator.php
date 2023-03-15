@@ -47,8 +47,6 @@ class AppCustomAuthenticator extends AbstractLoginFormAuthenticator
         }
 
         // For example:
-        $request->getSession()->getFlashBag()->add('success', 'Bienvenue sur votre veille technologique.');
-
         return new RedirectResponse($this->urlGenerator->generate('app_home'));
         throw new \Exception('TODO: provide a valid redirect inside ' . __FILE__);
     }
