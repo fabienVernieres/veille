@@ -6,7 +6,9 @@
     <div class="container py-5 mt-5">
     <h1>Editer un flux</h1>
 
+    <div class="col-12 col-md-8">
     {{ include('flow/_form.html.twig', {'button_label': 'Mettre à jour'}) }}
+    </div>
 
     <p class="my-3">
         <a href="{{ path('app_flow_index') }}">Retour à la liste</a>
