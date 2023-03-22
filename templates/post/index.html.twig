@@ -8,18 +8,18 @@
     {% if posts %}
         <div class="container pt-5">
             <div class="mt-5">
-                <h2 class="my-3 bg-primary p-3 text-light">Vos favoris</h2>
+                <h1 class="my-3 text-dark p-3">Vos favoris</h1>
                 <div class="row gy-3">
                     {% for post in posts %}
                         <div id="{{ post.id }}" class="favorites col-sm">
-                            <div class="card h-100 text-dark bg-secondary overflow-hidden">
-                                <div class="card-header small text-light row">
+                            <div class="card h-100 text-dark bg-light overflow-hidden">
+                                <div class="card-header small row">
                                     <div class="col news-date">{{ post.createdAt|date("d/m/Y") }}</div>
                                     <div class="col text-end">
-                                        <span><i class="fa-solid fa-trash"></i></span>
+                                        <span><i class="fa-solid fa-trash fs-6 text-primary"></i></span>
                                     </div>
                                 </div>
-                                <div class="card-body bg-light">
+                                <div class="card-body">
                                     <h5 class="card-title news-title">{{ post.title|e }}</h5>
                                     <p class="card-text news-description">{{ post.description|striptags }}</p>
                                     <p><a class="link-primary news-link" href="{{ post.link }}" target="_blank">voir</a></p>

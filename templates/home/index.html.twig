@@ -11,19 +11,19 @@
         {% if arrayData| length > 0 %}
             {% for data in arrayData %}
             <div class="mt-5">
-                <h2 class="my-3 bg-primary p-3 text-light">{{ data.title }} </h2>
+                <h2 class="my-3 p-3 text-dark">Flux {{ data.title }} </h2>
                 
                 <div class="row gy-3">
                 {% for data in data.entries|slice(0,app.user.numberOfPosts) %}
                     <div class="col-sm">
-                        <div class="news card h-100 text-dark bg-secondary overflow-hidden">
-                            <div class="card-header small text-light row">
+                        <div class="news card h-100 text-dark bg-light overflow-hidden">
+                            <div class="card-header small text-dark row">
                                 <div class="col news-date">{{ data.dateModified|date("d/m/Y") }}</div>
                                 <div class="col text-end">
-                                    <span><i class="fa-solid fa-floppy-disk"></i></span>
+                                    <span><i class="fa-solid fa-floppy-disk fs-5 text-primary"></i></span>
                                 </div>
                             </div>
-                            <div class="card-body bg-light">
+                            <div class="card-body">
                                 <h5 class="card-title news-title">{{ data.title|e }}</h5>
                                 <p class="card-text news-description">{{ data.description|striptags }}</p>
                                 <p><a class="link-primary news-link" href="{{ data.link }}" target="_blank">voir</a></p>
