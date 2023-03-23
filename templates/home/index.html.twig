@@ -6,16 +6,18 @@
     
     {# On parcourt le tableau des flux et affiche les 5 derniers posts de chacun. #}
     {% if app.user %}
-        <div class="container pt-5 flows">
-        <h1 class="pt-5 text-primary text-center">Bienvenue sur votre veille technologique</h1>
+        {% set i = 0 %}
+        <div class="container py-5 mb-5 flows">
+        <h1>Votre veille technologique</h1>
         {% if arrayData| length > 0 %}
             {% for data in arrayData %}
-            <div class="mt-5">
-                <h2 class="my-3 p-3 text-dark">Flux {{ data.title }} </h2>
+            {% set i = i + 1 %}
+            <div class="mb-5">
+                <h2 class="my-3 p-3 text-primary {% if i > 1 %}slide-in{% endif %}">Flux {{ data.title }} </h2>
                 
                 <div class="row gy-3">
                 {% for data in data.entries|slice(0,app.user.numberOfPosts) %}
-                    <div class="col-sm">
+                    <div class="col-12 col-md-6 col-lg-4">
                         <div class="news card h-100 text-dark bg-light overflow-hidden">
                             <div class="card-header small text-dark row">
                                 <div class="col news-date">{{ data.dateModified|date("d/m/Y") }}</div>
@@ -24,7 +26,7 @@
                                 </div>
                             </div>
                             <div class="card-body">
-                                <h5 class="card-title news-title">{{ data.title|e }}</h5>
+                                <h5 class="card-title news-title"><a class="link-primary text-decoration-none" href="{{ data.link }}" target="_blank">{{ data.title|e }}</a></h5>
                                 <p class="card-text news-description">{{ data.description|striptags }}</p>
                                 <p><a class="link-primary news-link" href="{{ data.link }}" target="_blank">voir</a></p>
                             </div>
@@ -33,14 +35,24 @@
                 {% endfor %}
                 </div>
             </div>
+
+            <hr class="mt-5 px-3">
             {% endfor %}
 
+            <div class="my-5 text-center">
+                <a href="{{ path('app_flow_index') }}">Gérer vos flux</a>
+            </div>
+
             {% else %}
-            <h2 class="text-center">Ajouter des flux pour commencer votre suivi informatif.</h2>
+            <h2 class="text-center mt-5 p-5 bg-light text-danger">Aucun flux actuellement dans votre veille.</h2>
+
+            <div class="text-center my-5">
+                <a class="btn btn-primary" href="{{ path('app_flow_index') }}">Démarrer votre veille</a>
+            </div>
+
         {% endif %}
         </div>
-    {% else %}
-    
+    {% else %}  
         <!-- Header-->
         <header class="masthead text-center text-white">
             <div class="masthead-content">
@@ -92,7 +104,7 @@
             </div>
         </section>
         <!-- Content section 3-->
-        <section>
+        <section class="pb-5">
             <div class="container px-5">
                 <div class="row gx-5 align-items-center">
                     <div class="col-lg-6 order-lg-2">
