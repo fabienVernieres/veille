@@ -7,7 +7,7 @@
     {# On parcourt le tableau des flux et affiche les 5 derniers posts de chacun. #}
     {% if app.user %}
         {% set i = 0 %}
-        <div class="container py-5 mb-5 flows">
+        <div class="container py-5 flows">
         <h1>Votre veille technologique</h1>
         {% if arrayData| length > 0 %}
             {% for data in arrayData %}
