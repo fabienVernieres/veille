@@ -48,8 +48,8 @@ class UserType extends AbstractType
                 'label' => 'Nombre de posts par flux',
                 'choices' => [
                     '3' => 3,
-                    '5' => 5,
-                    '10' => 10,
+                    '6' => 6,
+                    '9' => 9,
                 ]
             ]);
     }

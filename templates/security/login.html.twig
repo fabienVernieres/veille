@@ -3,7 +3,7 @@
 {% block title %}Connectez-vous!{% endblock %}
 
 {% block body %}
-<div class="container py-5 mt-5">
+<div class="container p-5">
     <form method="post">
         {% if error %}
             <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
@@ -16,7 +16,7 @@
         {% endif %}
 
         <h1 class="h3 mb-3 font-weight-normal">Connectez-vous</h1>
-        <div class="col-12 col-md-8">
+        <div class="col-12 col-md-6">
             <div class="form-group">
             <label class="mb-2" for="inputEmail">Email</label>
             <input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control" autocomplete="email" required autofocus>

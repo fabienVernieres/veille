@@ -30,7 +30,7 @@
     
     <body id="page-top">
         <!-- Navigation-->
-        <nav class="navbar navbar-expand-lg navbar-dark navbar-custom fixed-top">
+        <nav class="navbar navbar-expand-lg navbar-dark navbar-custom sticky-top">
             <div class="container px-5">
                 <a class="navbar-brand" href="{{ path('app_home') }}">VT</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
@@ -60,37 +60,11 @@
         {% endfor %}
 
         {% block body %}{% endblock %}
-        
-        {% if app.user %}
-            <div class="my-5">
-                <ul class="nav justify-content-center">
-                    <li class="nav-item">
-                        <a class="nav-link active" href="{{ path('app_home') }}">Votre veille</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link active" href="{{ path('app_flow_index') }}">Gestion des flux</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ path('app_flow_new') }}">Ajouter un flux</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ path('app_user_edit') }}">Vos paramètres</a>
-                    </li>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ path('app_post') }}">Vos favoris</a>
-                    </li>
-                </ul>
-
-                <div class="text-center p-3">
-                    Vous êtes connecté au compte : {{ app.user.email }}
-                </div>
-            </div>
-        {% endif %}
 
         <!-- Footer-->
-        <footer class="py-5 bg-black">
-            <div class="container px-5"><p class="m-0 text-center text-white small">Copyright &copy; <a href="https://fabienvernieres.com">fabienvernieres.com</a> 2023</p></div>
+        <footer class="py-3 bg-black opacity-75">
+            <div class="container px-5">
+                <p class="m-0 text-center text-white small">Copyright &copy; <a href="https://fabienvernieres.com" class="link-light">fabienvernieres.com</a> 2023</p></div>
         </footer>
     </body>
 </html>

@@ -5,7 +5,7 @@ const origin = document.location.origin;
 // On boucle sur les news et on écoute les événements click
 for (let post of news) {
   const postDate = post.querySelector(".news-date").innerHTML;
-  const postTitle = post.querySelector(".news-title").innerHTML;
+  const postTitle = post.querySelector(".news-title").innerText;
   const postDescription = post.querySelector(".news-description").innerHTML;
   const postLink = post.querySelector(".news-link").href;
 
@@ -89,6 +89,23 @@ function deletePost(favorite, postId) {
   postData(origin + "/post/delete", post).then((data) => {
     if (data === 204) {
       alert("Article supprimé de vos favoris");
+    }
+  });
+}
+
+// Slide nom des flux.
+const slideIn = document.querySelectorAll(".slide-in");
+
+for (let i = 0; i < slideIn.length; i++) {
+  window.addEventListener("scroll", () => {
+    const { scrollTop, clientHeight } = document.documentElement;
+    const topElementToTopViewport = slideIn[i].getBoundingClientRect().top;
+
+    if (
+      scrollTop >
+      (scrollTop + topElementToTopViewport).toFixed() - clientHeight * 0.9
+    ) {
+      slideIn[i].classList.add("active");
     }
   });
 }
