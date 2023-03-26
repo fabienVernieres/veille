@@ -84,6 +84,7 @@ class FlowController extends AbstractController
 
             /** Suppression du cache pour mise à jour. */
             $this->cache->delete($this->cacheName);
+            $this->addFlash('success', 'Flux mis à jour.');
 
             return $this->redirectToRoute('app_flow_index', [], Response::HTTP_SEE_OTHER);
         }
