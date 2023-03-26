@@ -93,19 +93,27 @@ function deletePost(favorite, postId) {
   });
 }
 
-// Slide nom des flux.
-const slideIn = document.querySelectorAll(".slide-in");
+// Effet slide sur élément.
+const threshold = 0.1;
+const options = {
+  root: null,
+  rootMargin: "0px",
+  threshold,
+};
 
-for (let i = 0; i < slideIn.length; i++) {
-  window.addEventListener("scroll", () => {
-    const { scrollTop, clientHeight } = document.documentElement;
-    const topElementToTopViewport = slideIn[i].getBoundingClientRect().top;
-
-    if (
-      scrollTop >
-      (scrollTop + topElementToTopViewport).toFixed() - clientHeight * 0.9
-    ) {
-      slideIn[i].classList.add("active");
+const handleIntersect = function (entries, observer) {
+  entries.forEach(function (entry) {
+    if (entry.intersectionRatio > threshold) {
+      entry.target.classList.add("active");
+      observer.unobserve(entry.target);
     }
   });
-}
+};
+
+window.addEventListener("DOMContentLoaded", function () {
+  const observer = new IntersectionObserver(handleIntersect, options);
+  const targets = document.querySelectorAll(".slide-in");
+  targets.forEach(function (target) {
+    observer.observe(target);
+  });
+});
