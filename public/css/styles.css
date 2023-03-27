@@ -73,19 +73,8 @@
   --bs-body-bg: #fff;
 }
 
-.slide-in {
-  transform: translateY(+25px);
-  opacity: 0;
-  transition: transform 2s ease-in-out, opacity 2s ease-in-out;
-}
-
-.slide-in.active {
-  transform: translateY(0%);
-  opacity: 1;
-}
-
 .card-body {
-  transition: background-color 1s ease-in-out;
+  transition: background-color 5s ease-in-out;
 }
 
 .card-body:hover {
