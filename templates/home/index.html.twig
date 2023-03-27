@@ -15,7 +15,7 @@
                 
                 <div class="row gy-3">
                 {% for data in data.entries|slice(0,app.user.numberOfPosts) %}
-                    <div class="col-12 col-md-6 col-lg-4 slide-in">
+                    <div class="col-12 col-md-6 col-lg-4">
                         <div class="news card h-100 text-dark bg-light overflow-hidden">
                             <div class="card-header small text-dark row">
                                 <div class="col news-date">{{ data.dateModified|date("d/m/Y") }}</div>
